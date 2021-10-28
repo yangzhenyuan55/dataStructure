@@ -3,7 +3,7 @@
 
 //初始化顺序栈,成功则返回true,失败返回false
 bool initSqStack(SqStack* S) {
-	S->base = (int*)malloc(STACK_INIT_SIZE * sizeof(int*));
+	S->base = (SElemType*)malloc(STACK_INIT_SIZE * sizeof(SElemType*));
 	if (!S->base) {
 		return false;
 	}//存储分配失败
@@ -13,7 +13,7 @@ bool initSqStack(SqStack* S) {
 }
 
 bool increaseCapacity(SqStack* S) {
-	S->base = (int*)realloc(S->base, (S->stackSize + STACKINCREMENT)*sizeof(int*));
+	S->base = (SElemType*)realloc(S->base, (S->stackSize + STACKINCREMENT)*sizeof(SElemType*));
 	if (!S->base) exit(0);
 	S->top = S->base + S->stackSize;
 	S->stackSize += STACKINCREMENT;
@@ -105,32 +105,4 @@ bool clearSqStack(SqStack* S)
 	return true;
 }
 
-//顺序栈的应用实例
-//判断一组括号是否合法
-//SElemTyle类型只能是char
-bool bracketIsMatch(SElemType* b, int bracket_len) {
-	//括号匹配的检查算法
-	SqStack stack;
-	initSqStack(&stack);
-	int i = 0;
-	//第一个是右括号直接不合法
-	if (b[0] == ')' || b[0] == ']' || b[0] == '}') return false;
-	while (i < bracket_len) {
-		//扫描到左括号
-		if (b[i] == '(' || b[i] == '[' || b[i] == '{') {
-			Push(&stack, b[i]);
-		}
-		else { //扫描到右括号
-			if (sqStackIsEmpty(stack)) return false; //栈为空则这些括号不合法
-			SElemType topElem;
-			Pop(&stack, &topElem);
-			if ((b[i] == ')' && topElem == '(') || (b[i] == '}' && topElem == '{') || (b[i] == ']' && topElem == '[')) {
-				i++;
-				continue;
-			}
-			else return false;
-		}
-		i++;
-	}
-	return sqStackIsEmpty(stack);
-}
+

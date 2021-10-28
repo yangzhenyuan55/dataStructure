@@ -22,11 +22,13 @@
     <ClInclude Include="LinkList.h" />
     <ClInclude Include="SqList.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkList.c" />
     <ClCompile Include="SqList.c" />
     <ClCompile Include="Stack.c" />
+    <ClCompile Include="util.c" />
     <ClCompile Include="__test__.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

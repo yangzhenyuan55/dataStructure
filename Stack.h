@@ -3,7 +3,6 @@
 
 #define STACK_INIT_SIZE 20
 #define STACKINCREMENT 10
-
 typedef char SElemType;
 /*
  *顺序栈的定义 
@@ -25,12 +24,10 @@ bool Push(SqStack* S, SElemType e);
 
 bool Pop(SqStack* S, SElemType* p);
 
-//用*p返回栈顶元素
+//用*p返回栈顶元素，但是不弹栈
 bool getTop(SqStack* S, SElemType* p);
 
 bool sqStackIsEmpty(SqStack S);
 
 bool clearSqStack(SqStack* S);
 
-//判断一组括号是否合法
-bool bracketIsMatch(SElemType* b, int bracket_len);

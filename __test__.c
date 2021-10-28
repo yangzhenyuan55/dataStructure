@@ -1,10 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-#include <string.h>
-#include "SqList.h"
-#include "LinkList.h"
-#include "Stack.h"
+#include "util.h"
 
+
+//注意引头文件的时候是否会重叠，会出现重定义错误 
 
 
 
@@ -68,11 +67,22 @@ int main(){
 	}
 	printf("\n");
 	*/
-	char brackets[] = "{()()[]{}{}[]}";
+
+	
+	/*char brackets[] = "{()()[]{}{}[]}";
 	int len = strlen(brackets);
 	if (bracketIsMatch(brackets, len)) {
 		printf("合法\n");
-	} else printf("不合法\n");
+	} else printf("不合法\n");*/
+
+	char expr[50];
+	printf("请输入一个运算表达式 以#作为结尾\n");
+	printf("表达式:>");
+	gets(expr);
+	double res = evaluateExpression(&expr);
+	printf("运算结果为:>");
+	printf("%f\n",res);
+
 	system("pause");
 	return 0;
 }
