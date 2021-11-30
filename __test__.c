@@ -1,13 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-#include "util.h"
-
+#include <Windows.h>
+#include "BinaryTree.h"
 
 //注意引头文件的时候是否会重叠，会出现重定义错误 
 
 
 
-int main(){
+/*int main() {
 	/*SqList sqList;
 	InitList(&sqList);
 	int i;
@@ -75,14 +75,52 @@ int main(){
 		printf("合法\n");
 	} else printf("不合法\n");*/
 
-	char expr[50];
+	/*char expr[50];
 	printf("请输入一个运算表达式 以#作为结尾\n");
 	printf("表达式:>");
 	gets(expr);
 	double res = evaluateExpression(&expr);
 	printf("运算结果为:>");
-	printf("%f\n",res);
+	printf("%f\n",res);*/
+
+	/*char info[100][3];
+	long long  num;
+	int count = 0;
+
+	
+
+	fflush(stdout);
+	while (scanf("%lld", &num) != EOF) {
+
+
+		if (num % 11 == 0) {
+			strcpy(info[count++], "yes");
+		}
+		else {
+			strcpy(info[count++], "no");
+		}
+		
+	}
+	printf("%s\n", info[0]);
+	for (int i = 0; i < count; i++) {
+		printf("%s\n", info[i]);
+	}
+	
 
 	system("pause");
+	return 0;
+}*/
+
+
+int main() {
+	BiTree tree =  NULL;
+	CreateBiTree(&tree);
+	
+	printf("\n递归先序遍历: ");
+	RcsPreOrderTraverse(tree, PrintElem);
+	printf("\n递归中序遍历: ");
+	RcsInOrderTraverse(tree, PrintElem);
+	printf("\n递归后续遍历: ");
+	RcsPostOrderTraverse(tree, PrintElem);
 	return 0;
 }

@@ -16,6 +16,9 @@ bool add(LinkList linkList, int elem) {
 		temp = temp->next;
 	}
 	temp->next = (LinkList)malloc(sizeof(LNode));
+	if (!temp->next) {
+		return false;
+	}
 	temp->next->data = elem;
 	temp->next->next = NULL;
 	return true;
@@ -157,6 +160,7 @@ int deleteLinkListElem(LinkList L, int i) {
 		temp = temp->next;
 		count++;
 	}
+	
 	LinkList p = temp->next;
 	int value = p->data;
 	temp->next = p->next;
