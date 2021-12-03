@@ -113,14 +113,6 @@
 
 
 int main() {
-	BiTree tree =  NULL;
-	CreateBiTree(&tree);
 	
-	printf("\n递归先序遍历: ");
-	RcsPreOrderTraverse(tree, PrintElem);
-	printf("\n递归中序遍历: ");
-	RcsInOrderTraverse(tree, PrintElem);
-	printf("\n递归后续遍历: ");
-	RcsPostOrderTraverse(tree, PrintElem);
 	return 0;
 }
