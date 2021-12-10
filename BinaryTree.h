@@ -12,7 +12,7 @@ typedef int Boolean;
 typedef char TElemType;
 
 
-
+// 二叉树节点
 typedef struct BiTNode {
 
 	TElemType val;
@@ -21,8 +21,25 @@ typedef struct BiTNode {
 	Boolean isEmpty;
 }BiTNode, *BiTree;
 
-Status InitBitree(BiTree* T);
 
+// 线索二叉树标志域 Link == 0 (指针) Thread == 1 (线索)
+typedef enum PointerTag {
+	Link, Thread
+}PointerTag;
+
+// 线索二叉树节点
+typedef struct BiThrNode {
+	// 节点值
+	TElemType val;
+	// 左孩子指针和有孩子指针
+	struct BiThrNode* lchild, * rchild;
+	PointerTag LTag, RTag; //左右标志
+}BiThrNode, * BiThrTree;
+
+
+
+
+// ============二叉树=====================
 
 Status CreateBiTree(BiTree* T);
 
@@ -33,3 +50,9 @@ Status RcsPreOrderTraverse(BiTree T, Status(*Visit)(TElemType e));
 Status RcsInOrderTraverse(BiTree T, Status(*Visit)(TElemType e));
 
 Status RcsPostOrderTraverse(BiTree T, Status(*Visit)(TElemType e));
+
+
+
+
+// 构造线索二叉树
+Status CreateBiThrTree(BiThrTree* T);

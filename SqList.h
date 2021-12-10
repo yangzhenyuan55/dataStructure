@@ -36,3 +36,4 @@ bool isEmpty(SqList* sqList);
 int LocateElem(SqList* sqList, int e);
 
 void DestroyList(SqList* sqList);
+

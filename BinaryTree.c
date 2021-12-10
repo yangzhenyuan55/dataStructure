@@ -1,11 +1,9 @@
 #include "BinaryTree.h"
 
 
-Status InitBitree(BiTree* T) {
-	(*T) = NULL;
-	return OK;
-}
 
+
+// 构造一个二叉树
 Status CreateBiTree(BiTree* T) {
 	TElemType e;
 	scanf("%c",&e);
@@ -76,3 +74,43 @@ Status RcsPostOrderTraverse(BiTree T, Status(*Visit)(TElemType e)) {
 	}
 	return OK;
 }
+
+Status CreateBiThrTree(BiThrTree* T) {
+	TElemType data;
+	scanf("%c", &data);
+
+
+	if (data == '#') {
+		*T = NULL;
+		return FALSE;
+	}
+	(*T) = (BiTree)malloc(sizeof(BiThrNode));
+	if (!(*T)) { return FALSE; };
+	(*T)->val = data;
+
+	getchar(); //将回车键给get，免得影响下一个scanf
+
+	CreateBiThrTree(&(*T)->lchild);
+	if ((*T)->lchild) {
+		(*T)->LTag = Link;
+	} else {
+		(*T)->LTag = Thread;
+	}
+
+	getchar();
+
+	CreateThrBiTree(&(*T)->rchild);
+	if ((*T)->rchild) {
+		(*T)->RTag = Link;
+	} else {
+		(*T)->RTag = Thread;
+	}
+
+	return OK;
+}
+
+
+
+
+// ====================线索二叉树====================
+
