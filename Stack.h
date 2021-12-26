@@ -10,6 +10,7 @@ typedef char SElemType;
 typedef struct {
 	SElemType* base;
 	SElemType* top;
+	int capacity;
 	int stackSize;
 }SqStack;
 
@@ -30,4 +31,7 @@ bool getTop(SqStack* S, SElemType* p);
 bool sqStackIsEmpty(SqStack S);
 
 bool clearSqStack(SqStack* S);
+
+
+void travelSqStack(SqStack S);
 

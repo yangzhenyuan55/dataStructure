@@ -174,5 +174,21 @@ void travelLinkList(LinkList L) {
 		printf("%d ", temp->data);
 		temp = temp->next;
 	}
+	printf("\n\n");
 	return;
+}
+
+
+bool modifyLinkListElem(LinkList L, int i, int elem) {
+	if (!L || i < 1) return false; //L为空指针或者
+	LinkList temp = L;
+	int count = 0; //计数器
+	while (L && count < i) {
+		temp = temp->next;
+		count++;
+	}
+	// 此时temp指向第i个链表节点
+	temp->data = elem;
+
+	return true;
 }

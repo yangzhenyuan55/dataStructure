@@ -45,3 +45,6 @@ int deleteLinkListElem(LinkList L, int i);
 
 //遍历整个链表，并打印
 void travelLinkList(LinkList L);
+
+// 将第i个元素修改成指定的值
+bool modifyLinkListElem(LinkList L, int i, int elem);

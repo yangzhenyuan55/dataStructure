@@ -114,7 +114,107 @@
 
 int main() {
 	
-	printf("Hello world");
+	//LinkList L;
+	//InitLinkList(&L); // 初始化链表
+	//add(L, 1); // 插入元素1
+	//add(L, 2); // 插入元素2
+	//add(L, 3); // 插入元素3
+	//printf("原链表:>");
+	//travelLinkList(L); //遍历链表
+
+	//deleteLinkListElem(L, 1); // 删除第i个元素
+	//printf("删除第1个元素后的链表:>");
+	//travelLinkList(L);
+
+	//linkListInsert(L, 1, 2); //在第i个位置插入元素2
+	//printf("在第1个位置插入2后的链表:>");
+	//travelLinkList(L);
+
+	//modifyLinkListElem(L, 1, 1); // 将链表第1个元素的值改为1
+	//printf("将第1个元素的值");
+	//travelLinkList(L);
+
+
+	//SqStack stack;
+	//initSqStack(&stack);
+	//Push(&stack, 'A');
+	//Push(&stack, 'B');
+	//Push(&stack, 'C');
+	//Push(&stack, 'D');
+	//Push(&stack, 'E');
+	//Push(&stack, 'F');
+	//Push(&stack, 'G');
+	//printf("输入:> ");
+	//travelSqStack(stack); // 遍历栈
+ //	char temp;
+
+	//printf("逆序:> ");
+	//for (int i = 0; i < 7; i++) {
+	//	Pop(&stack, &temp);
+	//	printf("%c ", temp);
+	//}
+	//printf("\n");
+
+	/*char expr[50];
+	printf("请输入一个运算表达式 以#作为结尾\n");
+	printf("表达式:>");
+	gets(expr);
+	double res = evaluateExpression(&expr);
+	printf("运算结果为:>");
+	printf("%.0f\n", res);*/
+
+	BiTree T = NULL;
+	InsertNode(&T, '3');
+	InsertNode(&T, '1');
+	InsertNode(&T, '2');
+	InsertNode(&T, '4');
+
+	printf("先序遍历:> ");
+	RcsPreOrderTraverse(T, PrintElem);
+	printf("\n");
+
+	printf("中序遍历:> ");
+	RcsInOrderTraverse(T, PrintElem);
+	printf("\n");
+	
+	printf("后序遍历:> ");
+	RcsPostOrderTraverse(T, PrintElem);
+	printf("\n");
+
+	DeleteNode(T, '1');
+	printf("删除 1 后:> \n");
+
+	printf("先序遍历:> ");
+	RcsPreOrderTraverse(T, PrintElem);
+	printf("\n");
+
+	printf("中序遍历:> ");
+	RcsInOrderTraverse(T, PrintElem);
+	printf("\n");
+
+	printf("后序遍历:> ");
+	RcsPostOrderTraverse(T, PrintElem);
+	printf("\n");
+
+
+	printf("将2修改成6:>\n");
+	ModifyNode(T, '2', '6');
+
+
+	printf("先序遍历:> ");
+	RcsPreOrderTraverse(T, PrintElem);
+	printf("\n");
+
+	printf("中序遍历:> ");
+	RcsInOrderTraverse(T, PrintElem);
+	printf("\n");
+
+	printf("后序遍历:> ");
+	RcsPostOrderTraverse(T, PrintElem);
+	printf("\n");
+
+	DestoryBiTree(T);
+
 	system("pause");
 	return 0;
 }

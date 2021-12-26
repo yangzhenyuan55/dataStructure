@@ -8,15 +8,16 @@ bool initSqStack(SqStack* S) {
 		return false;
 	}//´æ´¢·ÖÅäÊ§°Ü
 	S->top = S->base;
-	S->stackSize = STACK_INIT_SIZE;
+	S->capacity = STACK_INIT_SIZE;
+	S->stackSize = 0;
 	return true;
 }
 
 bool increaseCapacity(SqStack* S) {
-	S->base = (SElemType*)realloc(S->base, (S->stackSize + STACKINCREMENT)*sizeof(SElemType*));
+	S->base = (SElemType*)realloc(S->base, (S->capacity + STACKINCREMENT)*sizeof(SElemType*));
 	if (!S->base) exit(0);
-	S->top = S->base + S->stackSize;
-	S->stackSize += STACKINCREMENT;
+	S->top = S->base + S->capacity;
+	S->capacity += STACKINCREMENT;
 	return true;
 }
 
@@ -24,13 +25,14 @@ bool increaseCapacity(SqStack* S) {
 //Ïú»ÙË³ÐòÕ»£¬ÊÍ·ÅÕ¼ÓÃµÄÄÚ´æ¿Õ¼ä£¬³É¹¦·µ»Øtrue£¬Ê§°ÜÔò·µ»Øfalse
 bool destorySqStack(SqStack* S) {
 	//Ë³ÐòÕ»Î´³õÊ¼»¯,Ñ¹Õ»Ê§°Ü
-	if (S->stackSize < STACK_INIT_SIZE) {
+	if (S->capacity < STACK_INIT_SIZE) {
 		puts("Ë³ÐòÕ»Î´³õÊ¼»¯");
 		return false;
 	}
 	free(S->base);
 	S->base = NULL;
 	S->top = NULL;
+	S->capacity = 0;
 	S->stackSize = 0;
 	return false;
 }
@@ -38,16 +40,17 @@ bool destorySqStack(SqStack* S) {
 //Ñ¹Õ»
 bool Push(SqStack* S, SElemType e) {
 	//Ë³ÐòÕ»Î´³õÊ¼»¯,Ñ¹Õ»Ê§°Ü
-	if (S->stackSize < STACK_INIT_SIZE) {
+	if (S->capacity < STACK_INIT_SIZE) {
 		puts("Ë³ÐòÕ»Î´³õÊ¼»¯");
 		return false;
 	}
 	//Õ»Âú£¬À©ÈÝ
-	if (S->top - S->base >= S->stackSize) {
+	if (S->top - S->base >= S->capacity) {
 		increaseCapacity(S);
 	}
 	*S->top = e; //½«ÔªËØÑ¹ÈëÕ»ÖÐ£¬²¢½«topÖ¸ÏòÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
 	S->top++;
+	S->stackSize++;
 	return true;
 }
 
@@ -55,7 +58,7 @@ bool Push(SqStack* S, SElemType e) {
 //
 bool Pop(SqStack* S, SElemType* p) {
 	//Õ»Î´³õÊ¼»¯
-	if (S->stackSize < STACK_INIT_SIZE) {
+	if (S->capacity < STACK_INIT_SIZE) {
 		puts("Ë³ÐòÕ»Î´³õÊ¼»¯");
 		return false;
 	}
@@ -64,6 +67,7 @@ bool Pop(SqStack* S, SElemType* p) {
 		return false;
 	}
 	S->top--;
+	S->stackSize--;
 	*p = *S->top;
 	return true;
 }
@@ -71,7 +75,7 @@ bool Pop(SqStack* S, SElemType* p) {
 //·µ»ØÕ»¶¥ÔªËØ
 bool getTop(SqStack* S, SElemType* p) {
 	//Õ»Î´³õÊ¼»¯
-	if (S->stackSize < STACK_INIT_SIZE) {
+	if (S->capacity < STACK_INIT_SIZE) {
 		puts("Ë³ÐòÕ»Î´³õÊ¼»¯");
 		return false;
 	}
@@ -97,7 +101,7 @@ bool sqStackIsEmpty(SqStack S) {
 bool clearSqStack(SqStack* S)
 {
 	//Õ»Î´³õÊ¼»¯
-	if (S->stackSize < STACK_INIT_SIZE) {
+	if (S->capacity < STACK_INIT_SIZE) {
 		puts("Ë³ÐòÕ»Î´³õÊ¼»¯");
 		return false;
 	}
@@ -106,3 +110,9 @@ bool clearSqStack(SqStack* S)
 }
 
 
+void travelSqStack(SqStack S) {
+	for (int i = 0; i < S.stackSize; ++i) {
+		printf("%c ", *(S.base + i));
+	}
+	printf("\n");
+ }

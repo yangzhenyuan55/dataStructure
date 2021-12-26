@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #define TRUE 1
 #define FALSE 0
 #define OK 1
@@ -41,18 +43,33 @@ typedef struct BiThrNode {
 
 // ============二叉树=====================
 
+// 构造二叉树
 Status CreateBiTree(BiTree* T);
 
+// 往二叉树中插入节点
+Status InsertNode(BiTree* T, TElemType val);
+
+// 删除指定的节点
+BiTree DeleteNode(BiTree T, TElemType val);
+
+// 修改指定的节点
+Status ModifyNode(BiTree T, TElemType val, TElemType up);
+
+// 打印节点
 Status PrintElem(TElemType e);
 
+// 递归先序遍历
 Status RcsPreOrderTraverse(BiTree T, Status(*Visit)(TElemType e));
 
+// 递归中序遍历
 Status RcsInOrderTraverse(BiTree T, Status(*Visit)(TElemType e));
 
+// 递归后续遍历
 Status RcsPostOrderTraverse(BiTree T, Status(*Visit)(TElemType e));
 
+Status DestoryBiTree(BiTree T);
 
 
 
 // 构造线索二叉树
-Status CreateBiThrTree(BiThrTree* T);
+Status CreateThrBiTree(BiThrTree* T);
